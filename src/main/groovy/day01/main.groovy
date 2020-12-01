@@ -4,18 +4,18 @@ def numbers = new File("input.txt").readLines().collect({
     it.toInteger()
 })
 
-def answer = 0
-
 //Part one
-numbers.each { n ->
-    def m = 2020 - n
-    if (numbers.contains(m)) {
-        answer = n * m
+def val1 = numbers.inject(0) { result, number ->
+    def diff = 2020 - number
+    if (numbers.contains(diff)) {
+        return number * diff
     }
+    return result
 }
-println "Two numbers: $answer"
+println "Two numbers: $val1"
 
-//Part two
+
+def answer = 0
 numbers.each { n ->
     numbers.each { m ->
         def l = 2020 - m - n
