@@ -1,34 +1,29 @@
 package day01
 
-def floor = new File("input.txt")
-        .eachLine {
-            it.split("")
-                    .collect {
-                        if (it == "(")
-                            1
-                        else if (it == ")")
-                            -1
-                        else
-                            0
-                    }.inject { v1, v2 -> v1 + v2 }
-        }.inject { v1, v2 -> v1 + v2 }
+def numbers = new File("input.txt").readLines().collect({
+    it.toInteger()
+})
 
-println floor
-
-def sum = 0
-def pos = 0
-new File("input.txt")
-        .text
-        .split("")
-        .eachWithIndex { String entry, int i ->
-            if (sum == -1 && pos == 0) {
-                pos = i
-                return
-            }
-            if (entry == "(")
-                sum++
-            else if (entry == ")")
-                sum--
+def answer = 0
+numbers.each { n ->
+    numbers.each { m ->
+        if (n + m == 2020) {
+            answer = n * m
         }
-println pos
+    }
+}
+println "Two numbrs: $answer"
+
+numbers.each { n ->
+    numbers.each { m ->
+        numbers.each { l ->
+            if (n + m + l == 2020) {
+                answer = n * m * l
+            }
+        }
+    }
+}
+
+println "Three numbrs: $answer"
+
 
