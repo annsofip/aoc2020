@@ -5,25 +5,23 @@ def numbers = new File("input.txt").readLines().collect({
 })
 
 def answer = 0
+
+//Part one
+numbers.each { n ->
+    def m = 2020 - n
+    if (numbers.contains(m)) {
+        answer = n * m
+    }
+}
+println "Two numbers: $answer"
+
+//Part two
 numbers.each { n ->
     numbers.each { m ->
-        if (n + m == 2020) {
-            answer = n * m
+        def l = 2020 - m - n
+        if (numbers.contains(l)) {
+            answer = n * m * l
         }
     }
 }
-println "Two numbrs: $answer"
-
-numbers.each { n ->
-    numbers.each { m ->
-        numbers.each { l ->
-            if (n + m + l == 2020) {
-                answer = n * m * l
-            }
-        }
-    }
-}
-
-println "Three numbrs: $answer"
-
-
+println "Three numbers: $answer"
