@@ -1,18 +1,7 @@
 fs = require("fs");
 
 
-function getTwoNumbers(numbers) {
-    return numbers.map(function (n) {
-        const diff = 2020 - n;
-        if (numbers.includes(diff)) {
-            return n * diff;
-        }
-    }).find(function (element) {
-        return element !== undefined;
-    });
-}
-
-function getTwoNumbersWithReduce(numbers) {
+function getPart1(numbers) {
     return numbers.reduce(function (acc, number) {
         const diff = 2020 - number;
         if (numbers.includes(diff)) {
@@ -22,7 +11,7 @@ function getTwoNumbersWithReduce(numbers) {
     }, 0);
 }
 
-function getThreeNumbers(numbers) {
+function getPart2(numbers) {
     return numbers.map(function (n) {
         return numbers.map(function (m) {
             const diff = 2020 - n - m;
@@ -42,9 +31,8 @@ function getThreeNumbers(numbers) {
 const day1Input = fs.readFileSync("./input.txt").toString('utf-8');
 let arr = day1Input.split("\n").map(Number);
 //console.log(arr);
-console.log(getTwoNumbers(arr));
-console.log(getTwoNumbersWithReduce(arr));
-console.log(getThreeNumbers(arr));
+console.log(getPart1(arr));
+console.log(getPart2(arr));
 
 
 

@@ -1,7 +1,7 @@
 package day01
 
 
-static int getTwoNumbers(List<Integer> numbers) {
+static int getPart1(List<Integer> numbers) {
 
     return numbers.inject(0) { result, number ->
         def diff = 2020 - number
@@ -12,7 +12,7 @@ static int getTwoNumbers(List<Integer> numbers) {
     }
 }
 
-static int getThreeNumbers(List<Integer> numbers) {
+static int getPart2(List<Integer> numbers) {
     def answer
     numbers.each { n ->
         numbers.each { m ->
@@ -31,6 +31,6 @@ static void main(String[] args) {
         it.toInteger()
     })
 
-    println getTwoNumbers(numbers)
-    println getThreeNumbers(numbers)
+    println getPart1(numbers)
+    println getPart2(numbers)
 }
