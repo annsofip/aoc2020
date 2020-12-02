@@ -1,0 +1,11 @@
+{
+  "name": "advent2020",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/annsofip/aoc2020.git",
+  "author": "Annsofi Pettersson <Annsofi.Pettersson@evry.com>",
+  "license": "MIT",
+  "dependencies": {
+    "fs": "^0.0.1-security"
+  }
+}
