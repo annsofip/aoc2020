@@ -1,9 +1,5 @@
 fs = require("fs");
 
-function getPart1(rows) {
-    return countTrees(rows, {x: 3, y: 1})
-}
-
 function countTrees(rows, move) {
     const width = rows[0].length;
     return rows.reduce(function (acc, current) {
@@ -17,6 +13,10 @@ function countTrees(rows, move) {
         x: 0,
         y: 0
     }).trees
+}
+
+function getPart1(rows) {
+    return countTrees(rows, {x: 3, y: 1})
 }
 
 function getPart2(rows) {
