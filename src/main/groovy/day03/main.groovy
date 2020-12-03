@@ -12,19 +12,10 @@ private static int countTrees(List<String> rows, int xStepLength, int yStepLengt
     while (yPos < rows.size()) {
         rows[yPos].charAt(xPos) == '#' as char ? ++numberOfTrees : null
 
-        xPos = getNewXPos(xPos, xStepLength, rowLength)
-        yPos = getNewYPos(yPos, yStepLength)
-
+        xPos = (xPos + xStepLength) % rowLength
+        yPos = yPos + yStepLength
     }
     return numberOfTrees
-}
-
-private static int getNewYPos(int yPos, int yStepLength) {
-    return yPos + yStepLength
-}
-
-private static int getNewXPos(int xPos, int xStepLength, int rowLength) {
-    return xPos + xStepLength < rowLength ? xPos + xStepLength : xPos - rowLength + xStepLength
 }
 
 static int getPart2(List<String> rows) {
