@@ -8,7 +8,7 @@ import static day02.main.getPart2
 
 class day02Test extends Specification {
 
-    def "Should return correct amount for part 1"() {
+    def "Should count incorrect passwords correctly in part 1"() {
         List<String> rows = ["1-3 a: abcde",
                     "1-3 b: cdefg",
                     "2-9 c: ccccccccc"]
@@ -17,7 +17,7 @@ class day02Test extends Specification {
         getPart1(rows) == 2
     }
 
-    def "Should return correct amount for part 2"() {
+    def "Should count incorrect passwords correctly in part 2"() {
         List<String> rows = ["1-3 a: abcde",
                     "1-3 b: cdefg",
                     "2-9 c: ccccccccc"]
