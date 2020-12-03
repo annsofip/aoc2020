@@ -28,8 +28,8 @@ function getPart2(numbers) {
 
 
 
-const day1Input = fs.readFileSync("./input.txt").toString('utf-8');
-let arr = day1Input.split("\n").map(Number);
+const input = fs.readFileSync("./input.txt").toString('utf-8');
+let arr = input.split("\n").map(Number);
 //console.log(arr);
 console.log(getPart1(arr));
 console.log(getPart2(arr));

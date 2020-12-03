@@ -4,21 +4,27 @@ static int getPart1(List<String> rows) {
     return countTrees(rows, 3, 1)
 }
 
-private static int countTrees(List<String> rows, xStepLength, yStepLength) {
+private static int countTrees(List<String> rows, int xStepLength, int yStepLength) {
+    int numberOfTrees = 0
+    int rowLength = rows[0].length()
     int xPos = 0
     int yPos = 0
-    int trees = 0
     while (yPos < rows.size()) {
-        // println row
-        // println("Pos = $xPos " + rows[yPos].charAt(xPos))
-        if (rows[yPos].charAt(xPos).toString() == '#') {
-            trees++
-        }
-        xPos = xPos + xStepLength < rows[yPos].length() ? xPos + xStepLength : xPos - rows[yPos].length() + xStepLength
-        yPos = yPos + yStepLength
+        rows[yPos].charAt(xPos) == '#' as char ? ++numberOfTrees : null
+
+        xPos = getNewXPos(xPos, xStepLength, rowLength)
+        yPos = getNewYPos(yPos, yStepLength)
 
     }
-    return trees
+    return numberOfTrees
+}
+
+private static int getNewYPos(int yPos, int yStepLength) {
+    return yPos + yStepLength
+}
+
+private static int getNewXPos(int xPos, int xStepLength, int rowLength) {
+    return xPos + xStepLength < rowLength ? xPos + xStepLength : xPos - rowLength + xStepLength
 }
 
 static int getPart2(List<String> rows) {
