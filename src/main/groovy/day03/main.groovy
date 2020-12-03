@@ -1,21 +1,26 @@
 package day03
 
-static int getPart1(List<String> rows) {
-    return countTrees(rows, 3, 1)
+private static int countTrees(List<String> rows, int xStepLength, int yStepLength) {
+    int rowLength = rows[0].length()
+
+    rows.inject([trees: 0, x: 0, y: 0, currentY: 0]) { acc, row ->
+        println("y: " + acc["y"] + " currentY: " + acc["currentY"])
+
+        if (acc["currentY"] != acc["y"]) {
+            //Should only drive past this location will only increase currentY
+            acc.currentY = acc.currentY + 1
+            return acc
+        }
+        //Stopping at this location and need to count tree
+        return [trees   : acc["trees"] + ((row.charAt(acc["x"]) == ("#" as char)) ? 1 : 0),
+                x       : (acc["x"] + xStepLength) % rowLength,
+                y       : acc["y"] + yStepLength,
+                currentY: acc["currentY"] + 1]
+    }["trees"]
 }
 
-private static int countTrees(List<String> rows, int xStepLength, int yStepLength) {
-    int numberOfTrees = 0
-    int rowLength = rows[0].length()
-    int xPos = 0
-    int yPos = 0
-    while (yPos < rows.size()) {
-        rows[yPos].charAt(xPos) == '#' as char ? ++numberOfTrees : null
-
-        xPos = (xPos + xStepLength) % rowLength
-        yPos = yPos + yStepLength
-    }
-    return numberOfTrees
+static int getPart1(List<String> rows) {
+    return countTrees(rows, 3, 1)
 }
 
 static int getPart2(List<String> rows) {

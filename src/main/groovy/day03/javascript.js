@@ -3,15 +3,24 @@ fs = require("fs");
 function countTrees(rows, move) {
     const width = rows[0].length;
     return rows.reduce(function (acc, current) {
+        if (acc.y !== acc.currentY) {
+            //Should only drive past this location will only increase currentY
+            return {
+                ...acc,
+                currentY: acc.currentY + 1
+            }
+        }
         return {
             trees: acc.trees + (current.charAt(acc.x) === "#" ? 1 : 0),
             x: (acc.x + move.x) % width,
-            y: acc.y + move.y
+            y: acc.y + move.y,
+            currentY: acc.currentY + 1
         };
     }, {
         trees: 0,
         x: 0,
-        y: 0
+        y: 0,
+        currentY: 0
     }).trees
 }
 
