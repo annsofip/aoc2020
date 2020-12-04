@@ -9,29 +9,29 @@ class day04Test extends Specification {
 
     def "byr 2002 is valid"() {
         expect:
-        inRange(2002, 2002, 2002) == true
+        inRange(2002, 2002, 2002)
     }
     def "byr 2003 is invalid"() {
         expect:
-        inRange(2003, 2002, 2002) == false
+        !inRange(2003, 2002, 2002)
     }
     def "hgt 60in is valid"() {
         expect:
-        isValidHgt("60in") == true
+        isValidHgt("60in")
     }
     def "hgt 190cm is valid"() {
         expect:
-        isValidHgt("190cm") == true
+        isValidHgt("190cm")
     }
 
     def "hgt 190in is invalid"() {
         expect:
-        isValidHgt("190in") == false
+        !isValidHgt("190in")
     }
 
     def "hgt 190 is invalid"() {
         expect:
-        isValidHgt("190") == false
+        !isValidHgt("190")
     }
 
     def "hcl #123abc is valid"() {
