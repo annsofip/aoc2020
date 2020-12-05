@@ -13,44 +13,26 @@ private static List<Integer> scanBoardingPasses(List<String> rows) {
     })
 }
 
-private static Integer scanBoardingPass(String boardingpass) {
-
+private static int scanBoardingPass(String boardingpass) {
     def row = boardingpass.substring(0, 7).inject(0..127) { acc, letter ->
         int mid = (int) (acc.size() / 2)
-        def left = acc[0..mid - 1]
-        def right = acc[mid..acc.size() - 1]
-        return letter == "F" ? left : right
-    }
+        return letter == "F" ? acc[0..mid - 1] : acc[mid..acc.size() - 1]
+    }[0]
 
     def column = boardingpass.substring(7, boardingpass.size()).inject(0..7) { acc, letter ->
         int mid = (int) (acc.size() / 2)
-        def left = acc[0..mid - 1]
-        def right = acc[mid..acc.size() - 1]
-        return letter == "L" ? left : right
-    }
+        return letter == "L" ? acc[0..mid - 1] : acc[mid..acc.size() - 1]
+    }[0]
 
-    return row[0] * 8 + column[0]
-
+    return row * 8 + column
 }
 
 static int getPart2(List<String> rows) {
     List<String> ids = scanBoardingPasses(rows).sort()
-    def index = 1
-    def seat = 0
-    while (ids.size() - 1 > index) {
-        int seatBefore = Integer.valueOf((String) ids[index])
-        int nextSeat = Integer.valueOf((String) ids[index+1])
 
-
-        if (nextSeat - seatBefore == 1) {
-            //  println("alls good")
-        } else {
-            seat = seatBefore + 1
-        }
-
-        index++
-    }
-    return seat
+    return ids.find({ int id ->
+        !ids.contains(id + 1)
+    })
 }
 
 static void main(String[] args) {
