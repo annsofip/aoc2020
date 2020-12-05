@@ -2,9 +2,7 @@ package day05
 
 
 static int getPart1(List<String> rows) {
-
-    List<Object> ids = scanBoardingPasses(rows)
-    return ids.max()
+    return scanBoardingPasses(rows).max()
 }
 
 private static List<Integer> scanBoardingPasses(List<String> rows) {
@@ -41,4 +39,3 @@ static void main(String[] args) {
     println getPart1(rows)
     println getPart2(rows)
 }
-

@@ -15,14 +15,13 @@ cid (Country ID)
 
 static int getPart1(List<String> rows) {
     return rows.findAll({ row ->
-        def contains = row.contains("byr") &&
+        return row.contains("byr") &&
                 row.contains("iyr") &&
                 row.contains("eyr") &&
                 row.contains("hgt") &&
                 row.contains("hcl") &&
                 row.contains("ecl") &&
                 row.contains("pid")
-        return contains
     }).size()
 }
 
@@ -93,7 +92,7 @@ static boolean isValidEcl(String value) {
 static void main(String[] args) {
     def rows = new File("input.txt").getText().split("\\n\\n")
             .collect({ it.replace("\n", " ") })
-    println(rows)
+    //println(rows)
     println getPart1(rows)
     println getPart2(rows)
 }
