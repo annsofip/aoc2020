@@ -19,7 +19,7 @@ static int getPart2(List<String> input) {
 }
 
 static void main(String[] args) {
-    List<String> rows = new File("input.txt").getText().split("\\n\\n")
+    List<String> rows = new File("input.txt").getText().split("\n\n")
 
     //println(rows)
     println getPart1(rows)
