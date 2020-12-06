@@ -2,7 +2,7 @@ package day06
 
 
 static int getPart1(List<String> rows) {
-    return rows.collect({
+    return (Integer) rows.collect({
         it.replace("\n", "")
     }).collect({ String row -> row.toSet().sort().join().length() }).sum()
 }
@@ -12,7 +12,7 @@ static int getPart2(List<String> input) {
         def person = group.split("\n")
         person.collect({ answers ->
             answers.findAll({ answer ->
-               group.count(answer) == person.size()
+                group.count(answer) == person.size()
             })
         }).flatten().unique().size()
     }).sum()
