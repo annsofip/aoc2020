@@ -17,11 +17,11 @@ static int getPart2(List<String> input) {
     def rules = input.inject([:]) { acc, line ->
         def split = line.split(" bags contain ")
         acc[split[0]] = split[1].split(",").collect({ s ->
-            println(s)
-            def matcher = (s =~ /(\d) (\w+ \w+) bags?.?/)
+            def matcher = (s =~ / ?(\d) (\w+ \w+) bags?.?,? ?/)
             if (matcher.matches()) {
                 return [type: matcher[0][2], number: Integer.parseInt(matcher[0][1])]
             }
+
         }).findAll({ it })
         return acc
     }
@@ -31,7 +31,6 @@ static int getPart2(List<String> input) {
 def static getCountFor(LinkedHashMap rules, String bag) {
     def count = 0
     if (rules.containsKey(bag)) {
-        println(rules[bag])
         rules.get(bag).each { b ->
             count += b.number + getCountFor(rules, b.type) * b.number
         }
