@@ -7,21 +7,22 @@ function getPart1(input) {
 }
 
 function runProgram(instructions) {
-    let visitedIndicies = [];
+    let visitedIndices = [];
     let current = 0;
     let acc = 0;
     let success = false;
+
     while (current < instructions.length) {
-        visitedIndicies.push(current);
+        visitedIndices.push(current);
         const instruction = instructions[current];
         if (instruction.action === "nop") {
             current++;
         } else if (instruction.action === "acc") {
             current++;
-            acc += parseInt(instruction.count);
+            acc += instruction.count;
         } else if (instruction.action === "jmp") {
-            let newIndex = current + parseInt(instruction.count);
-            if (visitedIndicies.includes(newIndex)) {
+            let newIndex = current + instruction.count;
+            if (visitedIndices.includes(newIndex)) {
                 break;
             } else {
                 current = newIndex;
