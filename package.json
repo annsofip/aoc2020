@@ -6,6 +6,7 @@
   "author": "Annsofi Pettersson <Annsofi.Pettersson@evry.com>",
   "license": "MIT",
   "dependencies": {
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "lodash": "^4.17.20"
   }
 }
