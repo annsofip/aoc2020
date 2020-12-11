@@ -36,19 +36,18 @@ function getOccupiedSeats(input, findInDirection, maxOccupied) {
 
     let newSeatingGrid = JSON.parse(JSON.stringify(seatingGrid));
     while (true) {
-        let change = false;
+        let seatsChaged = false;
         for (let y = 1; y < seatingGrid.length - 1; y++) {
             for (let x = 1; x < seatingGrid[0].length - 1; x++) {
                 const value = seatingGrid[y][x];
                 if (value !== '.') {
                     const occupiedSeats = findNoOfAdjacentOccupiedSeats([x, y]);
                     newSeatingGrid[y][x] = (value === 'L') && occupiedSeats === 0 ? '#' : value === '#' && occupiedSeats >= maxOccupied ? 'L' : value;
-                    change = change || !(newSeatingGrid[y][x] === value);
+                    seatsChaged = seatsChaged || !(newSeatingGrid[y][x] === value);
                 }
-
             }
         }
-        if (change) {
+        if (seatsChaged) {
             seatingGrid = JSON.parse(JSON.stringify(newSeatingGrid));
         } else {
             return newSeatingGrid.map((row) => (row.join(''))).join('').count('#');
