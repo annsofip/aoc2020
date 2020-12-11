@@ -1,6 +1,4 @@
 fs = require("fs");
-_ = require("lodash");
-
 
 String.prototype.count = function (s1) {
     return (this.length - this.replace(new RegExp(s1, "g"), '').length) / s1.length;
@@ -64,7 +62,6 @@ function printSeating(seatingGrid) {
 }
 
 
-const debug = true;
 const input = fs.readFileSync("./input.txt").toString('utf-8');
 const arr = input.split(/\n/).filter(line => line.length > 0);
 //console.log(arr);
