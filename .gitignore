@@ -4,6 +4,8 @@
 .idea
 !src/**/build/
 build
+node_modules
+out
 
 # Ignore Gradle GUI config
 gradle-app.setting
