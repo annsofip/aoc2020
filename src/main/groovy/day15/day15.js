@@ -1,8 +1,8 @@
 fs = require("fs");
 
 
-
 function getPart1(input) {
+    let startTime = new Date();
     const startingNumbers = input.split(',').map(Number);
     let saidNumbers = [...startingNumbers];
 
@@ -16,10 +16,10 @@ function getPart1(input) {
         const lastSaidIndex = numSaidBefore[numSaidBefore.length - 1];
 
         const diff = (i) - (lastSaidIndex + 1);
-        console.log(`at index: ${i}: checking index: ${i - 1} :said: ${lastNumber} this was said before ${numSaidBefore}`);
-        console.log(`${(i)} - ${(lastSaidIndex + 1)}  = ${diff}`);
         saidNumbers[i] = numSaidBefore.length > 0 && lastSaidIndex !== i - 1 ? diff : 0;
     }
+    let endTime = new Date();
+    console.log(`Took ${Math.round((endTime.getTime() - startTime.getTime()))} milliseconds`)
 
     return saidNumbers[saidNumbers.length - 1]
 }
