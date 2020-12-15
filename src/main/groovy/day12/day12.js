@@ -87,12 +87,9 @@ function getPart2(input) {
 
 const input = fs.readFileSync("./input.txt").toString('utf-8');
 const arr = input.split(/\n/).filter(line => line.length > 0);
-//console.log(arr);
-//getPart1(arr)
+
 console.log(getPart1(arr) === 590 ? "Part1 is correct for input" : `expected 590 but was ${getPart1(arr)}`);
 console.log(getPart2(arr) === 42013 ? "Part2 is correct for input" : `expected 42013 but was ${getPart2(arr)}`);
-//console.log("PART 1 ", getPart1(arr));
-//console.log("PART 2 ", getPart2(arr));
 
 const testData = [
     "F10",

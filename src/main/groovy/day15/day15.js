@@ -1,17 +1,9 @@
 fs = require("fs");
 
 
-function copy(element) {
-
-}
-
-function copy(el) {
-    return JSON.parse(JSON.stringify(el))
-};
 
 function getPart1(input) {
     const startingNumbers = input.split(',').map(Number);
-
     let saidNumbers = [...startingNumbers];
 
     for (let i = saidNumbers.length; i < 2020; i++) {
