@@ -12,7 +12,9 @@ function getPart1(input) {
     });
     //log(endState);
 
-    return endState.player1Hand.length > 0 ? calcPlayerScore(endState.player1Hand) : calcPlayerScore(endState.player2Hand);
+    return endState.player1Hand.length > 0 ?
+        calcPlayerScore(endState.player1Hand) :
+        calcPlayerScore(endState.player2Hand);
 
 
     function calcPlayerScore(deck) {
@@ -42,7 +44,6 @@ function getPart1(input) {
                 player1Hand: player1Hand,
                 player2Hand: [...player2Hand, topCard2, topCard1],
                 round: ++state.round
-
             });
         }
     }
