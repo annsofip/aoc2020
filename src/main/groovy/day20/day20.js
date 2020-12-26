@@ -23,7 +23,7 @@ function getPart1(input) {
         const tile = row.split(/\n/).filter(x => x);
 
         const id = parseInt(/(\d+)/.exec(tile[0])[0]);
-        tile.shift()
+        tile.shift();
         return {
             id: id,
             matches: [],
@@ -59,12 +59,6 @@ function getPart1(input) {
         }
     }
 
- //   log(tiles);
- //   tiles.forEach(tile => {
- //       log({id: tile.id, matches: tile.matches})
- //   });
-
-//    log(tiles.filter(tile => (tile.matches.length === 2)))
     return tiles.filter(tile => (tile.matches.length === 2)).map(tile => tile.id).reduce((acc, id) => (acc * id), 1);
 }
 

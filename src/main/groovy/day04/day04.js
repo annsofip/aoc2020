@@ -38,7 +38,6 @@ function isValidPassport(passport) {
 }
 
 function isValidPid(value) {
-    console.log( value && value === ~/[0-9]{9}/);
     return value && value === ~/[0-9]{9}/;
 }
 
@@ -48,8 +47,6 @@ function isValidHcl(value) {
 }
 
 function isValidByr(value) {
-    console.log(value)
-   // console.log(value && inRange(value, 1920, 2002));
     return value && inRange(value, 1920, 2002);
 }
 
