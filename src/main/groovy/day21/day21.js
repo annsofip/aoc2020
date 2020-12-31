@@ -2,8 +2,7 @@ fs = require("fs");
 
 const log = console.log;
 
-function getPart1(input) {
-
+function getIngredientsWithAllergen(input) {
     const allergens2Ingredients = {};
     input.forEach((row) => {
         const [ingredients, allergens] = row.replace(/\)/, '')
@@ -32,6 +31,12 @@ function getPart1(input) {
         delete allergens2Ingredients[foundAllergen];
         keys = Object.keys(allergens2Ingredients);
     }
+    return foundIngredientsWithAllergen;
+}
+
+function getPart1(input) {
+
+    const foundIngredientsWithAllergen = getIngredientsWithAllergen(input);
 
     let sum = 0;
     input.forEach((row) => {
@@ -49,15 +54,22 @@ function getPart1(input) {
 }
 
 function getPart2(input) {
-    return input;
+    const foundIngredientsWithAllergen = getIngredientsWithAllergen(input);
 
+    const canonicalDangerousIngredientList = Object.entries(foundIngredientsWithAllergen)
+        .sort((a, b) => {
+            if (a[1] < b[1]) return -1;
+            if (a[1] > b[1]) return 1;
+            return 0;
+        }).map(x => x[0]).join(',');
+    return canonicalDangerousIngredientList;
 }
 
 
 const input = fs.readFileSync("./input.txt").toString('utf-8');
 const arr = input.split(/\n/).filter(line => line);
 console.log("PART 1 ", getPart1(arr));
-//console.log("PART 2 ", getPart2(arr));
+console.log("PART 2 ", getPart2(arr));
 
 //console.log("PART 1 ", getPart1(testData));
 //console.log("PART 2 ", getPart2(["2 * 3 + (4 * 5)"]));
