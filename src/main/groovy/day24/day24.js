@@ -98,5 +98,3 @@ const arr = input.split(/\n/).filter(line => line);
 console.log("PART 1", getPart1(arr));
 console.log("PART 2 ", getPart2(arr));
 
-//console.log("PART 1 ", getPart1(testData));
-//console.log("PART 2 ", getPart2(["2 * 3 + (4 * 5)"]));
